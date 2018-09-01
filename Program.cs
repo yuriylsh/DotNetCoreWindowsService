@@ -16,10 +16,7 @@ namespace DotNetCoreWindowsService
             Directory.SetCurrentDirectory(currentDirectory);
 
             var builder = new HostBuilder()
-                .ConfigureAppConfiguration(appConfig =>
-                {
-                    appConfig.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
-                })
+                .ConfigureAppConfiguration(appConfig => appConfig.AddJsonFile("appsettings.json"))
                 .ConfigureServices((hostContext, services) => services.AddHostedService<SampleBackgroundService>());
             var isDebugging = IsDebugging(args);
             builder.ConfigureSerilogLogging(isDebugging);
