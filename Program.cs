@@ -17,7 +17,7 @@ namespace DotNetCoreWindowsService
 
             var builder = new HostBuilder()
                 .ConfigureAppConfiguration(appConfig => appConfig.AddJsonFile("appsettings.json"))
-                .ConfigureServices((hostContext, services) => services.AddHostedService<SampleBackgroundService>());
+                .ConfigureServices(services => services.AddHostedService<SampleBackgroundService>());
             var isDebugging = IsDebugging(args);
             builder.ConfigureSerilogLogging(isDebugging);
 
